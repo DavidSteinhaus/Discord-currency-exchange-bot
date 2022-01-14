@@ -11,8 +11,7 @@
   "dependencies": {
     "discord.js": "^13.5.1",
     "fs": "^0.0.1-security",
-    "puppeteer": "^13.0.1",
-    "node": "16.13.2"
+    "puppeteer": "^13.0.1"
   }
   
 }
