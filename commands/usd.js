@@ -5,7 +5,7 @@ module.exports = {
     description:'send image',
     execute(client, message, args, Discord){
         (async () => {
-            const browser = await puppeteer.launch({
+            const browser = await pupp.launch({
       headless: true,
       args: [
         '--no-sandbox',
