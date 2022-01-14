@@ -13,4 +13,7 @@
     "fs": "^0.0.1-security",
     "puppeteer": "^13.0.1"
   }
+  "engines": {
+    "node": "16.13.2" 
+}
 }
