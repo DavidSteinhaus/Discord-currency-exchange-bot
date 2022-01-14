@@ -5,7 +5,14 @@ module.exports = {
     description:'send image',
     execute(client, message, args, Discord){
         (async () => {
-            const browser = await pupp.launch();
+            const browser = await pupp.launch({
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage'
+      ],
+    });
             const page = await browser.newPage();
             await page.goto('https://www.google.com/finance/quote/EUR-TRY');
             let screenshot = await page.screenshot({ path: 'screenshot.png' });
