@@ -14,7 +14,7 @@ module.exports = {
       ],
     });
             const page = await browser.newPage();
-            await page.goto('https://www.google.com/finance/quote/CAD-TRY');
+            await page.goto('https://www.google.com/finance/quote/CAD-TRY?window=1M');
             let screenshot = await page.screenshot({ path: 'screenshot.png' });
             await browser.close();
 
