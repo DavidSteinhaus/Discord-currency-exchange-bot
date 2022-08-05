@@ -9,12 +9,12 @@
   "author": "Anas",
   "license": "ISC",
   "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
     "discord.js": "^13.5.1",
     "fs": "^0.0.1-security",
     "puppeteer": "^13.0.1"
   },
   "engines": {
-    "node": "16.13.2" 
+    "node": "16.13.2"
   }
-  
 }
