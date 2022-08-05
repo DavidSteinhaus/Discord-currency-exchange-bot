@@ -2,7 +2,7 @@ const pupp = require("puppeteer");
 const cheerio = require("cheerio");
 
 module.exports = {
-  name: "eur",
+  name: "euro",
   description: "send image",
   execute(client, message, args, Discord) {
     (async () => {
