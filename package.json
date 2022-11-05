@@ -13,6 +13,7 @@
     "cheerio": "^1.0.0-rc.12",
     "discord.js": "^13.5.1",
     "fs": "^0.0.1-security",
+    "node-cron": "^3.0.2",
     "puppeteer": "^13.0.1"
   },
   "engines": {
