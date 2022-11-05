@@ -1,4 +1,4 @@
-const pupp = require("puppeteer");
+/* const pupp = require("puppeteer");
 const cheerio = require("cheerio");
 
 module.exports = {
@@ -35,3 +35,4 @@ module.exports = {
     })();
   },
 };
+ */
