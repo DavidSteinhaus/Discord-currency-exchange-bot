@@ -1,6 +1,5 @@
 var fx = require("../static/money");
 const http = require("https");
-const cron = require("node-cron");
 
 module.exports = {
   name: "rate",
