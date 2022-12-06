@@ -1,6 +1,8 @@
 var fx = require("../static/money");
 const http = require("https");
 const cron = require("node-cron");
+require("dotenv").config();
+const API = process.env.EXCHANGE_API;
 
 module.exports = {
   name: "cron",
@@ -9,7 +11,7 @@ module.exports = {
     (async () => {
       cron.schedule("0 17 * * *", () => {
         let req = http.get(
-          "https://openexchangerates.org/api/latest.json?app_id=e0e62c8ed9b3436bb8b587cc5074e1cf",
+          `https://openexchangerates.org/api/latest.json?app_id=${API}`,
           (res) => {
             let data = "",
               json_data;

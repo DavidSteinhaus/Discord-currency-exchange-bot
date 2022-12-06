@@ -1,5 +1,7 @@
 var fx = require("../static/money");
 const http = require("https");
+require("dotenv").config();
+const API = process.env.EXCHANGE_API;
 
 module.exports = {
   name: "rate",
@@ -7,7 +9,7 @@ module.exports = {
   execute(client, message, args, Discord) {
     (async () => {
       let req = http.get(
-        "https://openexchangerates.org/api/latest.json?app_id=e0e62c8ed9b3436bb8b587cc5074e1cf",
+        `https://openexchangerates.org/api/latest.json?app_id=${API}`,
         (res) => {
           let data = "",
             json_data;
@@ -20,15 +22,15 @@ module.exports = {
             fx.rates = json_data.rates;
             fx.base = json_data.base;
             fx.settings = { from: "EUR", to: "TRY" };
-            let EURTRY = fx.convert(1);
+            let EURTRY = fx.convert(1).toFixed(3);
             fx.settings = { from: "USD", to: "TRY" };
-            let USDTRY = fx.convert(1);
+            let USDTRY = fx.convert(1).toFixed(3);
             fx.settings = { from: "CAD", to: "TRY" };
-            let CADTRY = fx.convert(1);
+            let CADTRY = fx.convert(1).toFixed(3);
             fx.settings = { from: "GBP", to: "TRY" };
-            let GBPTRY = fx.convert(1);
+            let GBPTRY = fx.convert(1).toFixed(3);
             fx.settings = { from: "SEK", to: "TRY" };
-            let SEKTRY = fx.convert(1);
+            let SEKTRY = fx.convert(1).toFixed(3);
             message.channel.send(
               "EUR: " +
                 EURTRY +
