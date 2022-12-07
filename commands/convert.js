@@ -1,4 +1,4 @@
-var fx = require("../static/money");
+var fx = require("../utils/money");
 const http = require("https");
 require("dotenv").config();
 const API = process.env.EXCHANGE_API;

@@ -1,13 +1,15 @@
-var fx = require("../static/money");
+/* var fx = require("../utils/money");
 const http = require("https");
 require("dotenv").config();
-const API = process.env.EXCHANGE_API;
-
+const API = process.env.EXCHANGE_API; */
+const convert = require("../utils/convert");
 module.exports = {
   name: "rate",
   description: "send exchange rate of turkish lira",
-  execute(client, message, args, Discord) {
-    (async () => {
+  async execute(client, message, args, Discord) {
+    let converted = await convert.convert(1, "EUR", "TRY");
+    console.log(converted);
+    /* (async () => {
       let req = http.get(
         `https://openexchangerates.org/api/latest.json?app_id=${API}`,
         (res) => {
@@ -55,6 +57,6 @@ module.exports = {
       req.on("error", (e) => {
         console.log(e.message);
       });
-    })();
+    })(); */
   },
 };
