@@ -1,62 +1,25 @@
-/* var fx = require("../utils/money");
-const http = require("https");
-require("dotenv").config();
-const API = process.env.EXCHANGE_API; */
 const convert = require("../utils/convert");
+const currencies = require("../config/config");
 module.exports = {
   name: "rate",
   description: "send exchange rate of turkish lira",
-  async execute(client, message, args, Discord) {
-    let converted = await convert.convert(1, "EUR", "TRY");
-    console.log(converted);
-    /* (async () => {
-      let req = http.get(
-        `https://openexchangerates.org/api/latest.json?app_id=${API}`,
-        (res) => {
-          let data = "",
-            json_data;
-
-          res.on("data", (stream) => {
-            data += stream;
-          });
-          res.on("end", () => {
-            json_data = JSON.parse(data);
-            fx.rates = json_data.rates;
-            fx.base = json_data.base;
-            fx.settings = { from: "EUR", to: "TRY" };
-            let EURTRY = fx.convert(1).toFixed(3);
-            fx.settings = { from: "USD", to: "TRY" };
-            let USDTRY = fx.convert(1).toFixed(3);
-            fx.settings = { from: "CAD", to: "TRY" };
-            let CADTRY = fx.convert(1).toFixed(3);
-            fx.settings = { from: "GBP", to: "TRY" };
-            let GBPTRY = fx.convert(1).toFixed(3);
-            fx.settings = { from: "SEK", to: "TRY" };
-            let SEKTRY = fx.convert(1).toFixed(3);
-            message.channel.send(
-              "EUR: " +
-                EURTRY +
-                "\n" +
-                "USD: " +
-                USDTRY +
-                "\n" +
-                "CAD: " +
-                CADTRY +
-                "\n" +
-                "GBP: " +
-                GBPTRY +
-                "\n" +
-                "SEK: " +
-                SEKTRY +
-                "\n"
-            );
-          });
-        }
+  execute(client, message, args, Discord) {
+    let resultToSend = [];
+    currencies.currencyList.map((currency) => {
+      let converted = convert.convert(1, currency, "TRY");
+      resultToSend.push({ name: currency, value: converted });
+    });
+    const embedMessage = new Discord.MessageEmbed()
+      .setColor(0x446b89)
+      .setTitle("Turkish lira exchange rates:    ")
+      .addFields(
+        resultToSend.map((result) => {
+          return { name: result.name, value: result.value, inline: true };
+        })
       );
-
-      req.on("error", (e) => {
-        console.log(e.message);
-      });
-    })(); */
+    message.channel.send({ embeds: [embedMessage] });
   },
 };
+
+//.setTitle("Hello " + message.member.user.tag.replace(/#[0-9]{4}/, "") + "!")
+//.setDescription(date.toString())
