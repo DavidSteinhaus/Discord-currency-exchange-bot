@@ -13,6 +13,7 @@ module.exports = {
           "there are currently no currencies set up. please use !config add [currency] to add your first currency!"
         );
       } else {
+        message.channel.send("Available currencies: ");
         currencyList.map((currency) => {
           message.channel.send(currency);
         });
@@ -21,6 +22,9 @@ module.exports = {
         );
         message.channel.send(
           "to remove a currency please use !config remove [currency]"
+        );
+        message.channel.send(
+          "to remove all currencies please use !config remove-all"
         );
       }
     }
