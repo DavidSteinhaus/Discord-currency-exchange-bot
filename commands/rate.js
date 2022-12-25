@@ -1,5 +1,5 @@
 var fx = require("../utils/money");
-const currencies = require("../config/config");
+const configs = require("../config/config");
 const axios = require("axios");
 require("dotenv").config();
 const API = process.env.EXCHANGE_API;
@@ -15,7 +15,8 @@ module.exports = {
           let data = response.data;
           fx.base = data.base;
           fx.rates = data.rates;
-          currencies.currencyList.map((currency) => {
+          let currencyList = configs.myEnmap.get("currencyList");
+          currencyList.map((currency) => {
             fx.settings = { from: currency, to: "TRY" };
             let converted = fx.convert(1).toFixed(3);
             resultToSend.push({ name: currency, value: converted });
