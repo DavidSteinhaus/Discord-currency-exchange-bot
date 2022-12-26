@@ -17,15 +17,6 @@ module.exports = {
         currencyList.map((currency) => {
           message.channel.send(currency);
         });
-        message.channel.send(
-          "to add a new currency please use !config add [currency one] [currency two] ..."
-        );
-        message.channel.send(
-          "to remove a currency please use !config remove [currency]"
-        );
-        message.channel.send(
-          "to remove all currencies please use !config remove-all"
-        );
       }
     }
     switch (args[0]) {
@@ -65,3 +56,8 @@ module.exports = {
     }
   },
 };
+//TODO : ADMIN Permissions.
+// better user friendly messages (command !rate)
+//
+// add base convert to configs
+// personalized messages
