@@ -6,5 +6,5 @@ module.exports = (Discord, client, message) => {
   if (!configs.myEnmap.has("base")) {
     configs.myEnmap.set("base", "TRY");
   }
-  console.log("TRYbot is online!");
+  console.log("Bot is online!");
 };
