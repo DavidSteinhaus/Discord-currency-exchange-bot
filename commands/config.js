@@ -3,13 +3,16 @@ module.exports = {
   name: "config",
   description: "edit bot configs",
   execute(client, message, args, Discord) {
+    //check for admin permissions
     if (!message.member.permissions.has("ADMINISTRATOR")) {
       message.channel.send("you must be an admin to use the !config command");
       return;
     }
+    //check if the list has been created
     if (!configs.myEnmap.has("currencyList")) {
       return;
     }
+    //show all available currencies
     let currencyList = configs.myEnmap.get("currencyList");
     if (args.length == 0) {
       if (currencyList.length == 0) {
@@ -24,6 +27,7 @@ module.exports = {
       }
     }
     switch (args[0]) {
+      //add one or multiple currencies to the list.
       case "add":
         for (let i = 1; i < args.length; i++) {
           if (!configs.symbole.includes(args[i].toUpperCase())) {
@@ -40,6 +44,7 @@ module.exports = {
           }
         }
         break;
+      //remove one currency at a time.
       case "remove":
         if (!currencyList.includes(args[1].toUpperCase())) {
           return message.channel.send("this currency is not in the list!");
@@ -47,6 +52,7 @@ module.exports = {
         configs.myEnmap.remove("currencyList", args[1].toUpperCase());
         message.channel.send(args[1].toUpperCase() + " removed successfully!");
         break;
+      //remove all currencies from the list.
       case "remove-all":
         configs.myEnmap.delete("currencyList");
         if (!configs.myEnmap.has("currencyList")) {
@@ -54,6 +60,7 @@ module.exports = {
         }
         message.channel.send("All currencies were removed successfully!");
         break;
+      //set the base to exchange to.
       case "set-base":
         configs.myEnmap.delete("base");
         configs.myEnmap.set("base", args[1].toUpperCase());
@@ -62,6 +69,7 @@ module.exports = {
           `${args[1]} is now the base exchange to currency for the !rate command.`
         );
         break;
+      //send descriptions for the available commands
       case "help":
         const embedMessage = new Discord.MessageEmbed()
           .setColor(0x446b89)
@@ -98,4 +106,3 @@ module.exports = {
     }
   },
 };
-// TODO : comments and documentations
