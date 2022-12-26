@@ -98,6 +98,4 @@ module.exports = {
     }
   },
 };
-//TODO :
-// Modal ??
-// personalized messages
+// TODO : comments and documentations

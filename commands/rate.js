@@ -49,6 +49,3 @@ module.exports = {
     })();
   },
 };
-
-//.setTitle("Hello " + message.member.user.tag.replace(/#[0-9]{4}/, "") + "!")
-//.setDescription(date.toString())
