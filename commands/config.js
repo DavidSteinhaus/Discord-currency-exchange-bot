@@ -83,6 +83,12 @@ module.exports = {
               name: "!config remove-all",
               value: "removes all currencies for the configs.",
               inline: false,
+            },
+            {
+              name: "!convert",
+              value:
+                "convert an amount to a specific currency. example: !convert [amount] [from] [to]",
+              inline: false,
             }
           );
         message.channel.send({ embeds: [embedMessage] });
@@ -93,5 +99,5 @@ module.exports = {
   },
 };
 //TODO :
-//
+// Modal ??
 // personalized messages
