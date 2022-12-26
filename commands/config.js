@@ -3,6 +3,10 @@ module.exports = {
   name: "config",
   description: "edit bot configs",
   execute(client, message, args, Discord) {
+    if (!message.member.permissions.has("ADMINISTRATOR")) {
+      message.channel.send("you must be an admin to use the !config command");
+      return;
+    }
     if (!configs.myEnmap.has("currencyList")) {
       return;
     }
@@ -63,6 +67,6 @@ module.exports = {
     }
   },
 };
-//TODO : ADMIN Permissions.
+//TODO :
 //
 // personalized messages
