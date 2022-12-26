@@ -29,7 +29,7 @@ module.exports = {
             });
             const embedMessage = new Discord.MessageEmbed()
               .setColor(0x446b89)
-              .setTitle(`${base} exchange rates:    `)
+              .setTitle(`${base} purchase rate:    `)
               .addFields(
                 resultToSend.map((result) => {
                   return {
