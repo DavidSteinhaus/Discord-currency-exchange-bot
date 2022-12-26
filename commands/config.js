@@ -26,7 +26,7 @@ module.exports = {
             message.channel.send(args[i] + " is not a valid currency symbol.");
           } else if (currencyList.includes(args[i].toUpperCase())) {
             message.channel.send(
-              args[i].toUpperCase() + " is already in the list"
+              args[i].toUpperCase() + " is already in the list."
             );
           } else {
             configs.myEnmap.push("currencyList", args[i].toUpperCase());
@@ -44,20 +44,25 @@ module.exports = {
         message.channel.send(args[1].toUpperCase() + " removed successfully!");
         break;
       case "remove-all":
-        configs.myEnmap.deleteAll();
+        configs.myEnmap.delete("currencyList");
         if (!configs.myEnmap.has("currencyList")) {
           configs.myEnmap.set("currencyList", []);
         }
         message.channel.send("All currencies were removed successfully!");
         break;
+      case "set-base":
+        configs.myEnmap.delete("base");
+        configs.myEnmap.set("base", args[1].toUpperCase());
 
+        message.channel.send(
+          `${args[1]} is now the base exchange to currency for the !rate command.`
+        );
+        break;
       default:
         break;
     }
   },
 };
 //TODO : ADMIN Permissions.
-// better user friendly messages (command !rate)
 //
-// add base convert to configs
 // personalized messages

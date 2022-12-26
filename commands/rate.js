@@ -16,19 +16,20 @@ module.exports = {
           fx.base = data.base;
           fx.rates = data.rates;
           let currencyList = configs.myEnmap.get("currencyList");
+          let base = configs.myEnmap.get("base");
           if (currencyList == 0) {
             message.channel.send(
               "there are currently no currencies available. please use !config add to add a new currency."
             );
           } else {
             currencyList.map((currency) => {
-              fx.settings = { from: currency, to: "TRY" };
+              fx.settings = { from: currency, to: base };
               let converted = fx.convert(1).toFixed(3);
               resultToSend.push({ name: currency, value: converted });
             });
             const embedMessage = new Discord.MessageEmbed()
               .setColor(0x446b89)
-              .setTitle("Turkish lira exchange rates:    ")
+              .setTitle(`${base} exchange rates:    `)
               .addFields(
                 resultToSend.map((result) => {
                   return {
