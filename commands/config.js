@@ -30,6 +30,11 @@ module.exports = {
     switch (args[0]) {
       //add one or multiple currencies to the list.
       case "add":
+        if (!args[1]) {
+          return message.channel.send(
+            "cannot add empty value to the list, please provide a valid currency symbol."
+          );
+        }
         for (let i = 1; i < args.length; i++) {
           if (!configs.symbole.includes(args[i].toUpperCase())) {
             message.channel.send(args[i] + " is not a valid currency symbol.");
@@ -52,6 +57,11 @@ module.exports = {
         break;
       //remove one currency at a time.
       case "remove":
+        if (!args[1]) {
+          return message.channel.send(
+            "cannot remove empty from the list, please provide a valid value."
+          );
+        }
         if (!currencyList.includes(args[1].toUpperCase())) {
           return message.channel.send("this currency is not in the list!");
         }
@@ -68,6 +78,9 @@ module.exports = {
         break;
       //set the base to exchange to.
       case "set-base":
+        if (!args[1] || !configs.symbole.includes(args[1].toUpperCase())) {
+          return message.channel.send("Please provide a valid currency!");
+        }
         if (base === args[1].toUpperCase()) {
           message.channel.send(
             `${args[1]} is already the base exchange to currency for the !rate command.`
